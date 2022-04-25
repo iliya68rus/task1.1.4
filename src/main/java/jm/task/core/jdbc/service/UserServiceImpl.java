@@ -10,7 +10,8 @@ public class UserServiceImpl implements UserService {
     private final UserDao udji;
 
     public UserServiceImpl(){
-        udji = new UserDaoJDBCImpl();
+//        udji = new UserDaoJDBCImpl();
+        udji = new UserDaoHibernateImpl();
     }
     public void createUsersTable() {
         udji.createUsersTable();
@@ -31,7 +32,9 @@ public class UserServiceImpl implements UserService {
 
     public List<User> getAllUsers() {
         List<User> list = udji.getAllUsers();
-        System.out.println(list);
+        for (User user:list) {
+            System.out.println(user);
+        }
         return list;
     }
 
